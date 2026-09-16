@@ -1,17 +1,9 @@
 package Challenge06_04;
 
 public class Parent {
-	protected String name;
+	String name = "영조";
 	
-	public Parent(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
-	}
-	
-	public String show() {
-		return "나는" + name + "이다.";
+	void print() {
+		System.out.println("나는 " + name + "이다.");
 	}
 }

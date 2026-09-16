@@ -1,11 +1,10 @@
 package Challenge06_04;
 
 public class Child extends Parent {
-	public Child(String name) {
-		this.name = name;
-	}
+	String name = "사도세자";
 	
-	public String getName() {
-		return name;
+	@Override
+	void print() {
+		System.out.println("나는 " + name + "이다.");
 	}
 }
