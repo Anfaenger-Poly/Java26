@@ -1,0 +1,36 @@
+package bank.app.menu;
+
+import bank.account.AccountService;
+import bank.app.console.ConsoleMenu;
+import bank.member.MemberService;
+
+public class AdminMemberMenu extends ConsoleMenu {
+	
+	public AdminMemberMenu(AccountService as, MemberService ms) {
+		super(as, ms);
+		menuList = new String[] {"돌아가기", "회원목록", "회원강퇴"};	
+	}
+
+	@Override
+	public void run() {
+		System.out.println("::: 회원 관리 :::");
+		while (true) {
+			int menu = selectMenu();
+			switch (menu) {
+			case 1 -> MenuListMembers();
+			case 2 -> MenuDeleteMember();
+			case 0 -> {return;}
+			default -> System.out.println("메뉴에 있는 번호를 선택하세요!!");
+			}
+		}
+	}
+	
+	private void MenuListMembers() {
+		System.out.println("::: 회원목록 :::");
+	}
+	
+	private void MenuDeleteMember() {
+		System.out.println("::: 회원강퇴 :::");
+	}
+	
+}
