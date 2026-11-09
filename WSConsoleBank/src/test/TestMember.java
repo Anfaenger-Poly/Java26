@@ -5,18 +5,45 @@ import java.util.List;
 import bank.member.Member;
 import bank.member.MemberDao;
 import bank.member.MemberListDao;
+import bank.member.MemberOracleDao;
 import bank.member.MemberService;
 import bank.member.WSMemberService;
 
 
 public class TestMember {
 	public static void main(String[] args) {
-		testMemberService();
-		testMemberDao();
+		testMemberOracleDao();
+	}
+	
+	public static void testMemberOracleDao() {
+		MemberDao mdao = new MemberOracleDao();
+		
+		System.out.println("> 회원추가");
+		mdao.save(new Member("aaa", "1111", "회원A", null, null, Member.USER));
+		mdao.save(new Member("bbb", "1111", "회원B", null, null, Member.USER));
+		mdao.save(new Member("ccc", "1111", "회원C", null, null, Member.USER));
+		
+		System.out.println("> 회원목록");
+		List<Member> members = mdao.findAll();
+		printMemberList(members);
+		
+		System.out.println("> id로 회원 조회");
+		Member member = mdao.findById("aaa");
+		System.out.println(member);
+		
+		System.out.println("> 비밀번호 변경");
+		member.setPassword("1234");
+		mdao.update(member);
+		printMemberList(mdao.findAll());
+		
+		System.out.println("> 회원 삭제");
+		mdao.delete(mdao.findById("bbb"));
+		printMemberList(mdao.findAll());
+		
 	}
 	
 	public static void testMemberService() {
-		MemberService ms = new WSMemberService(new MemberListDao());
+		MemberService ms = new WSMemberService(new MemberOracleDao());
 		
 		System.out.println(">> 회원가입 및 목록조회");
 		ms.join("curi", "1234", "큐리");
@@ -64,6 +91,7 @@ public class TestMember {
 		printMemberList(mdao.findAll());
 		
 	}
+
 	
 	public static void printMemberList(List<Member> mlist) {
 		for (Member m : mlist) {
