@@ -12,7 +12,9 @@ import bank.member.WSMemberService;
 
 public class TestMember {
 	public static void main(String[] args) {
-		testMemberOracleDao();
+//		testMemberDao();
+		testMemberService();
+//		testMemberOracleDao();
 	}
 	
 	public static void testMemberOracleDao() {
