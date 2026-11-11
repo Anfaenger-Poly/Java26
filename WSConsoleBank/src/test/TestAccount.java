@@ -4,7 +4,7 @@ import java.util.List;
 
 import bank.account.Account;
 import bank.account.AccountDao;
-import bank.account.AccountListDao;
+import bank.account.AccountMapDao;
 
 public class TestAccount {
 	public static void main(String[] args) {
@@ -12,10 +12,12 @@ public class TestAccount {
 	}
 
 	public static void testAccountDao() {
-		AccountDao adao = new AccountListDao();
+		AccountDao adao = new AccountMapDao();
+//		AccountDao adao = new AccountListDao();
 		// 계좌 추가
 		adao.save(new Account(12341234, "1111", "1000", 50000));
 		adao.save(new Account(43214321, "2222", "1001", 100000));
+		adao.save(new Account(12345678, "3333", "1000", 30000));
 		
 		// 계좌 목록
 		System.out.println(">>> 계좌 목록");
@@ -32,8 +34,8 @@ public class TestAccount {
 
 		// 비밀번호 변경
 		System.out.println(">>> 비밀번호 변경");
-		a.setPassword("1234");
-		adao.update(a);
+		System.out.println(adao.update(new Account(12341234, "1234", "1000", 50000)));
+		System.out.println(adao.findByNo(12341234));
 
 		// 계좌 삭제
 		System.out.println(">>> 계좌 삭제");

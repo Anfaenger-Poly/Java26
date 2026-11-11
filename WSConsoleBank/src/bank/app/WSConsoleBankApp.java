@@ -11,6 +11,7 @@ import bank.member.WSMemberService;
 public class WSConsoleBankApp {
 	
 	public static void main(String[] args) {
+//	    MemberService ms = new WSMemberService(new MemberMapDao());
 	    MemberService ms = new WSMemberService(new MemberListDao());
 	    AccountService as = new WSAccountService(new AccountListDao());
 
