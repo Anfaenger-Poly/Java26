@@ -21,7 +21,6 @@ public class MyInfoMenu extends ConsoleMenu {
 			case 1 -> ChangePassword();
 			case 2 -> DeleteMember();
 			case 0 -> {return;}
-			case -1 -> System.out.println("숫자만 입력하세요!!");
 			default -> System.out.println("메뉴에 있는 번호를 선택하세요!!");
 			}
 		}
